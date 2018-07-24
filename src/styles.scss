@@ -1,0 +1,50 @@
+@import 'variables';
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+$backgroundScreen: #232323;
+$backgroundCubes: #373737;
+$text: #656565;
+$sendButton: #4c4c4b;
+
+.containerApp{
+  background-color: $backgroundScreen;
+  height: 100vh;
+}
+
+.colorWhiteSize{
+   color: white;
+   font-size: 3vmax;
+ }
+.colorGreySize{
+  color: $text;
+  font-size: 2vmax;
+}
+sup {
+  vertical-align: middle;
+  font-size: xx-small;
+}
+
+.textCenter{
+  text-align: center;
+}
+
+.paddingTop20{
+  padding-top: 20px;
+}
+
+
+
+.mat-fab .mat-button-wrapper{
+  padding: 0 !important;
+}
+
+.mat-fab.mat-accent{
+  background-color: $sendButton;
+}
+
+.mat-fab, img{
+  width: 6vmax !important;
+  height: 6vmax !important;
+}
