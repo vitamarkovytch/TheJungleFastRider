@@ -8,21 +8,32 @@ $backgroundCubes: #373737;
 $text: #656565;
 $sendButton: #4c4c4b;
 
-.container-fluid{
+.containerApp{
   background-color: $backgroundScreen;
   height: 100vh;
 }
 
-h5{
-  color: white;
-}
-h6{
+.colorWhiteSize{
+   color: white;
+   font-size: 3vmax;
+ }
+.colorGreySize{
   color: $text;
+  font-size: 2vmax;
 }
 sup {
   vertical-align: middle;
   font-size: xx-small;
 }
+
+.textCenter{
+  text-align: center;
+}
+
+.paddingTop20{
+  padding-top: 20px;
+}
+
 
 
 .mat-fab .mat-button-wrapper{
@@ -33,7 +44,7 @@ sup {
   background-color: $sendButton;
 }
 
-.mat-fab{
-  width: 60px !important;
-  height: 60px !important;
+.mat-fab, img{
+  width: 6vmax !important;
+  height: 6vmax !important;
 }
