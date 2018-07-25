@@ -24,12 +24,12 @@
       <div class="col-6 col-sm-4 col-md-3 col-lg-2 padding5" *ngFor="let ride of rides">
         <div class="cube container-fluid "
              [style.border-top]="'3px solid' + ride.zone.color">
-<div class="flexbox-container">
-          <div class="row colorGrey fontSizeSmall justify-content-end">
+
+          <div class="row colorGrey fontSizeSmall justify-content-end paddingRight5">
             {{ride.zone.name}}
           </div>
 
-          <div class="row fontColorWhite justify-content-center textCenter">
+          <div class="row fontColorWhite justify-content-center textCenter rideName">
             {{ride.name}}
           </div>
 
@@ -41,12 +41,11 @@
             </div>
             <div class="col-6 paddingZero colorGrey">
               <img class="iconSmall" src="../../assets/icons/ico-g-01.svg" alt="ticket">
-              <!--{{'20'}}-->
-              {{ride.remaining_tickets}}
+              {{'20'}}
+              <!--{{ride.remaining_tickets}}-->
             </div>
           </div>
 
-        </div>
         </div>
       </div>
     </div>
