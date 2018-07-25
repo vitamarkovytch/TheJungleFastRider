@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import {MaterialModule} from './shared/modules/material.module';
 import { RidesComponent } from './rides/rides.component';
 import {AppRoutingModule} from './app-routing.module';
+import { CustomTimePipe } from './shared/pipes/custom-time.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RidesComponent,
+    CustomTimePipe,
   ],
   imports: [
     BrowserModule,

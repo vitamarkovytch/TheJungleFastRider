@@ -2,37 +2,81 @@
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-
 $backgroundScreen: #232323;
 $backgroundCubes: #373737;
 $text: #656565;
 $sendButton: #4c4c4b;
+$colorWhite: #ffffff;
 
 .containerApp{
   background-color: $backgroundScreen;
-  height: 100vh;
+  min-height: 100vh;
 }
 
-.colorWhiteSize{
-   color: white;
-   font-size: 3vmax;
- }
-.colorGreySize{
-  color: $text;
-  font-size: 2vmax;
+.cube{
+  height: 130px;
+  background-color: $backgroundCubes;
 }
+.flexbox-container {
+
+}
+.bottom0{
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.colorWhite{
+   color: $colorWhite;
+}
+
+.fontColorWhite{
+  color: $colorWhite;
+  font-size: larger;
+}
+.colorGrey{
+  color: $text;
+}
+
+.fontSizeSmall{
+  font-size: small;
+}
+
 sup {
-  vertical-align: middle;
-  font-size: xx-small;
+  vertical-align: super;
+  font-size: 0.5rem;
 }
 
 .textCenter{
   text-align: center;
 }
 
-.paddingTop20{
-  padding-top: 20px;
+.iconSmall{
+  width: 20px;
+  height: 20px;
+  font-size: large;
 }
+
+.paddingTop30{
+  padding-top: 30px;
+}
+.marginTop20{
+  margin-top: 20px;
+}
+
+.padding5{
+  padding: 5px;
+}
+.padding10_30{
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 10px;
+}
+.paddingZero{
+  padding: 0;
+}
+
+
 
 
 
@@ -40,11 +84,14 @@ sup {
   padding: 0 !important;
 }
 
-.mat-fab.mat-accent{
+.mat-fab.mat-accent[disabled]{
   background-color: $sendButton;
 }
 
-.mat-fab, img{
-  width: 6vmax !important;
-  height: 6vmax !important;
+.mat-fab, .iconBig{
+  width: 5vmax !important;
+  height: 5vmax !important;
+}
+.iconBig, .mat-button {
+  vertical-align: initial !important;
 }

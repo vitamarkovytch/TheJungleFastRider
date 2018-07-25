@@ -1,12 +1,54 @@
 <div class="container-fluid">
-  <button mat-fab><img src="../../assets/icons/ico-01.svg" alt="01"></button>
-  <h6 class="colorGreySize">Enter your park ticket #PIN number, then select
-    the desired ride while nothing the stated return time</h6>
+  <div class="row marginTop20">
+    <div class="col-sm-4 textCenter padding10_30">
+      <button mat-fab disabled><img class="iconBig" src="../../assets/icons/ico-01.svg" alt="ticket"></button>
+      <h6 class="colorGrey">Enter your park ticket #PIN number, then select
+        the desired ride while nothing the stated return time</h6>
+    </div>
 
-  <button mat-fab><img src="../../assets/icons/ico-02.svg" alt="02"></button>
-  <h6 class="colorGreySize">Press 'submit' to confirm and retrieve your access code</h6>
+    <div class="col-sm-4 textCenter padding10_30">
+      <button mat-fab disabled><img class="iconBig" src="../../assets/icons/ico-02.svg" alt="submit"></button>
+      <h6 class="colorGrey">Press 'submit' to confirm and retrieve your access code</h6>
+    </div>
 
-  <button mat-fab><img src="../../assets/icons/ico-03.svg" alt="03"></button>
-  <h6 class="colorGreySize">When the time comes, use special FastRider line to cut out a
-    considerable wait time</h6>
+    <div class="col-sm-4 textCenter padding10_30">
+      <button mat-fab disabled><img class="iconBig" src="../../assets/icons/ico-03.svg" alt="clock"></button>
+      <h6 class="colorGrey">When the time comes, use special FastRider line to cut out a
+        considerable wait time</h6>
+    </div>
+
+  </div>
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 padding5" *ngFor="let ride of rides">
+        <div class="cube container-fluid "
+             [style.border-top]="'3px solid' + ride.zone.color">
+<div class="flexbox-container">
+          <div class="row colorGrey fontSizeSmall justify-content-end">
+            {{ride.zone.name}}
+          </div>
+
+          <div class="row fontColorWhite justify-content-center textCenter">
+            {{ride.name}}
+          </div>
+
+          <div class="row textCenter bottom0">
+            <div class="col-6 paddingZero colorGrey">
+              <img class="iconSmall" src="../../assets/icons/ico-g-03.svg" alt="clock">
+              <!--{{ride.return_time | customTime}}-->
+              {{'2018-07-25T22:50:00.000+03:00' | customTime}}
+            </div>
+            <div class="col-6 paddingZero colorGrey">
+              <img class="iconSmall" src="../../assets/icons/ico-g-01.svg" alt="ticket">
+              <!--{{'20'}}-->
+              {{ride.remaining_tickets}}
+            </div>
+          </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -5,6 +5,7 @@ import {RidesComponent} from './rides/rides.component';
 
 const routes: Routes = [
   {path: '', component: RidesComponent},
+  {path: '', redirectTo: '', pathMatch: 'full'},
   {path: 'access', loadChildren: './access/access.module#AccessModule'}
 ];
 

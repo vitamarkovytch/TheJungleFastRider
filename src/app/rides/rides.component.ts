@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ServerService} from '../shared/services/server.service';
+import {RidesModel} from '../shared/models/rides.model';
 
 @Component({
   selector: 'app-rides',
@@ -7,6 +8,7 @@ import {ServerService} from '../shared/services/server.service';
   styleUrls: ['./rides.component.scss']
 })
 export class RidesComponent implements OnInit {
+  rides: RidesModel[] = [];
 
   constructor(private serverService: ServerService) { }
 
@@ -18,6 +20,8 @@ export class RidesComponent implements OnInit {
   getRides() {
     this.serverService.getAllRides().subscribe(
       response => {
+        this.rides = response;
+        console.log(this.rides);
         console.log(response);
       },
       error => {
