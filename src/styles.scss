@@ -1,38 +1,125 @@
 @import 'variables';
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import 'margingsPaddings';
 
+$FontPathOpenSans: "../node_modules/npm-font-open-sans/fonts";
+@import '../node_modules/npm-font-open-sans/open-sans.scss';
 
 $backgroundScreen: #232323;
 $backgroundCubes: #373737;
 $text: #656565;
 $sendButton: #4c4c4b;
+$colorWhite: #ffffff;
+$width100: 100%;
+
+body{
+  font-family: $FontPathOpenSans;
+}
 
 .containerApp{
   background-color: $backgroundScreen;
-  height: 100vh;
+  min-height: 100vh;
 }
 
-.colorWhiteSize{
-   color: white;
-   font-size: 3vmax;
- }
-.colorGreySize{
-  color: $text;
-  font-size: 2vmax;
+.cube{
+  height: 140px;
+  background-color: $backgroundCubes;
+  position: relative;
 }
+
+.rideName{
+  margin: 0 auto;
+  width: 80%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.bottom10{
+  position: absolute;
+  bottom: 10px;
+  width: $width100;
+}
+.closeTime{
+  position: absolute;
+  bottom: 5px;
+  line-height: 1em;
+}
+
+.colorWhite{
+   color: $colorWhite;
+}
+
+.fontColorWhite{
+  color: $colorWhite;
+  font-size: x-large;
+}
+
+.fontSize_1_2rem{
+  font-size: 1.2rem;
+}
+.lineHeight2{
+  line-height: 2em;
+}
+.lineHeight_2_3{
+  line-height: 2.3em;
+}
+.colorGrey{
+  color: $text;
+}
+
+.fontSizeSmall{
+  font-size: small;
+}
+
 sup {
-  vertical-align: middle;
-  font-size: xx-small;
+  vertical-align: super;
+  font-size: 0.5rem;
 }
 
 .textCenter{
   text-align: center;
 }
 
-.paddingTop20{
-  padding-top: 20px;
+.iconSmall{
+  width: 20px;
+  height: 20px;
+  font-size: large;
 }
+
+.inputPIN, ::placeholder{
+  font-family: $FontPathOpenSans;
+  color: black;
+  width: $width100;
+  font-weight: bold;
+  font-size: large;
+}
+
+.btn{
+  border-radius: initial;
+  background-color: $sendButton;
+  color: $colorWhite;
+  width: $width100;
+}
+.btn-outline-secondary{
+  border-color: $sendButton;
+}
+
+
+@media only screen and (max-width: 576px){
+  .btn{
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    margin-left: -20px;
+    line-height: 2.5em;
+    font-size: x-large;
+  }
+}
+
+
+
 
 
 
@@ -40,11 +127,14 @@ sup {
   padding: 0 !important;
 }
 
-.mat-fab.mat-accent{
+.mat-fab.mat-accent[disabled]{
   background-color: $sendButton;
 }
 
-.mat-fab, img{
-  width: 6vmax !important;
-  height: 6vmax !important;
+.mat-fab, .iconBig{
+  width: 5vmax !important;
+  height: 5vmax !important;
+}
+.iconBig, .mat-button {
+  vertical-align: initial !important;
 }
