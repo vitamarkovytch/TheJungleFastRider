@@ -1,12 +1,21 @@
 @import 'variables';
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import 'margingsPaddings';
+
+$FontPathOpenSans: "../node_modules/npm-font-open-sans/fonts";
+@import '../node_modules/npm-font-open-sans/open-sans.scss';
 
 $backgroundScreen: #232323;
 $backgroundCubes: #373737;
 $text: #656565;
 $sendButton: #4c4c4b;
 $colorWhite: #ffffff;
+$width100: 100%;
+
+body{
+  font-family: $FontPathOpenSans;
+}
 
 .containerApp{
   background-color: $backgroundScreen;
@@ -14,7 +23,7 @@ $colorWhite: #ffffff;
 }
 
 .cube{
-  height: 130px;
+  height: 140px;
   background-color: $backgroundCubes;
   position: relative;
 }
@@ -23,14 +32,19 @@ $colorWhite: #ffffff;
   margin: 0 auto;
   width: 80%;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.bottom0{
+.bottom10{
   position: absolute;
   bottom: 10px;
-  width: 100%;
+  width: $width100;
+}
+.closeTime{
+  position: absolute;
+  bottom: 5px;
+  line-height: 1em;
 }
 
 .colorWhite{
@@ -39,7 +53,17 @@ $colorWhite: #ffffff;
 
 .fontColorWhite{
   color: $colorWhite;
-  font-size: larger;
+  font-size: x-large;
+}
+
+.fontSize_1_2rem{
+  font-size: 1.2rem;
+}
+.lineHeight2{
+  line-height: 2em;
+}
+.lineHeight_2_3{
+  line-height: 2.3em;
 }
 .colorGrey{
   color: $text;
@@ -64,29 +88,36 @@ sup {
   font-size: large;
 }
 
-.paddingTop30{
-  padding-top: 30px;
+.inputPIN, ::placeholder{
+  font-family: $FontPathOpenSans;
+  color: black;
+  width: $width100;
+  font-weight: bold;
+  font-size: large;
 }
-.marginTop20{
-  margin-top: 20px;
+
+.btn{
+  border-radius: initial;
+  background-color: $sendButton;
+  color: $colorWhite;
+  width: $width100;
 }
-/*.marginRight5{
-  margin-right: 3px;
-}*/
-.paddingRight5{
-  padding-right: 5px;
+.btn-outline-secondary{
+  border-color: $sendButton;
 }
-.padding5{
-  padding: 5px;
+
+
+@media only screen and (max-width: 576px){
+  .btn{
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    margin-left: -20px;
+    line-height: 2.5em;
+    font-size: x-large;
+  }
 }
-.padding10_30{
-  padding-right: 30px;
-  padding-left: 30px;
-  padding-top: 10px;
-}
-.paddingZero{
-  padding: 0;
-}
+
 
 
 
