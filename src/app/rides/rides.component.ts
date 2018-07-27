@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ServerService} from '../shared/services/server.service';
 import {RidesModel} from '../shared/models/rides.model';
 import * as $ from 'jquery';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-rides',
@@ -10,6 +11,7 @@ import * as $ from 'jquery';
 })
 export class RidesComponent implements OnInit {
   rides: RidesModel[] = [];
+  colorRide: string;
 
   constructor(private serverService: ServerService) {
   }
@@ -49,6 +51,17 @@ export class RidesComponent implements OnInit {
       },
       error => {
         console.log(error);
+      }
+    );
+  }
+
+  chooseRide(color, id, ridesAll) {
+    ridesAll.forEach((element) => {
+        if (element.id === id) {
+          document.getElementById(id).style.backgroundColor = color;
+        } else {
+          document.getElementById(element.id).style.backgroundColor = '#373737';
+        }
       }
     );
   }

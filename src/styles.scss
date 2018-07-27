@@ -26,6 +26,17 @@ body{
   height: 140px;
   background-color: $backgroundCubes;
   position: relative;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+
+
+.rideZone{
+  position: absolute;
+  top:0;
+  width: $width100;
 }
 
 .rideName{
