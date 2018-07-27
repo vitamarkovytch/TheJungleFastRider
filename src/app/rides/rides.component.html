@@ -5,7 +5,7 @@
       <button mat-fab disabled><img class="iconBig" src="../../assets/icons/ico-01.svg" alt="ticket">
       </button>
       <h6 class="colorGrey fontSize_1_2rem">Enter your park ticket #PIN number, then select
-        the desired ride while nothing the stated return time</h6>
+        the desired ride while noting the stated return time</h6>
     </div>
 
     <div class="col-sm-4 textCenter padding10_30">
@@ -25,27 +25,36 @@
 
 
   <div class="container-fluid">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
     <div class="row  padding5 marginTop20 marginBottom5">
 
       <div class="col-sm-8 col-md-9 col-lg-10 paddingZero">
-        <input type="text" class="lineHeight_2_3 inputPIN paddingLeft10" placeholder="#PIN">
+        <input type="text" class="lineHeight_2_3 inputPIN paddingLeft10"
+               placeholder="#PIN"
+               formControlName="pin" required>
       </div>
 
       <div class="col-sm-4 col-md-3 col-lg-2 paddingZero" id="submitBtn">
-        <button class="btn btn-outline-secondary lineHeight2" type="button">
+        <button class="btn btn-outline-secondary lineHeight2" [disabled]="form.invalid || clickedRideId === -1">
           SUBMIT
         </button>
 
       </div>
     </div>
+    </form>
+
 
     <div class="row justify-content-center">
 
       <div class="col-6 col-sm-4 col-md-3 col-lg-2 padding5" *ngFor="let ride of rides">
+
         <button class="cube container-fluid" [id]="ride.id"
-                (click)="chooseRide(ride.zone.color, ride.id, rides)"
-                [style.border-top]="'3px solid' + ride.zone.color">
+                (click)="chooseRide(ride)"
+                [style.border-top]="'4px solid' + ride.zone.color"
+                type="button"
+                [value]="ride.id"
+                >
 
           <div class="row colorGrey fontSizeSmall justify-content-end paddingRight5 paddingTop5 rideZone">
             {{ride.zone.name}}
@@ -56,22 +65,24 @@
           </div>
 
           <div class="row textCenter bottom10" *ngIf="ride.return_time!==null; else closeTime">
+
             <div class="col-6 paddingZero colorGrey">
               <img class="iconSmall" src="../../assets/icons/ico-g-03.svg" alt="clock">
               {{ride.return_time | customTime}}
             </div>
+
             <div class="col-6 paddingZero colorGrey">
               <img class="iconSmall" src="../../assets/icons/ico-g-01.svg" alt="ticket">
               {{ride.remaining_tickets}}
             </div>
+
           </div>
 
           <ng-template #closeTime>
             <div class="row justify-content-center textCenter ">
               <p class="colorGrey closeTime marginZero">
-                {{'working hours of park is 09:00-23:00'}}
+                {{'Park working hours are 09:00-23:00'}}
               </p>
-
             </div>
           </ng-template>
 

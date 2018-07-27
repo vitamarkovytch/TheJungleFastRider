@@ -9,6 +9,7 @@ import {MaterialModule} from './shared/modules/material.module';
 import { RidesComponent } from './rides/rides.component';
 import {AppRoutingModule} from './app-routing.module';
 import { CustomTimePipe } from './shared/pipes/custom-time.pipe';
+import { PinValidatorDirective } from './shared/directives/pin-validator.directive';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { CustomTimePipe } from './shared/pipes/custom-time.pipe';
     AppComponent,
     RidesComponent,
     CustomTimePipe,
+    PinValidatorDirective,
   ],
   imports: [
     BrowserModule,

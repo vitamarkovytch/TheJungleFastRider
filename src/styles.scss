@@ -116,6 +116,14 @@ sup {
 .btn-outline-secondary{
   border-color: $sendButton;
 }
+.btn-outline-secondary.disabled, .btn-outline-secondary:disabled{
+  background-color: $sendButton;
+  opacity: 1;
+}
+
+button:focus {
+  outline: 0;
+}
 
 
 @media only screen and (max-width: 576px){
