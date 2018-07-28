@@ -15,7 +15,7 @@ export class ServerService {
   constructor(private http: HttpClient) {
   }
 
-  baseUrl = 'http://fast-rider.herokuapp.com/api/v1';
+  baseUrl = 'https://fast-rider.herokuapp.com/api/v1';
   token = 'd901573a653991cac2de57ee2e6356a043fc8ad03d';
 
   getAllRides(): Observable<RideModel[]> {
