@@ -1,6 +1,5 @@
 import {Directive} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Directive({
   selector: '[appPinValidator]'
@@ -12,7 +11,7 @@ export class PinValidatorDirective {
 
   static validPin(control: FormControl) {
 
-    /*  JN-3117-5100-LH   */
+    /*  JN-3117-5100-LH, JN-3117-5101-LJ, JN-0000-1111-AG, JN-3117-5102-LL */
 
     function getLetterFromArray(array: any) {
       let firstResult = 0;
@@ -48,6 +47,7 @@ export class PinValidatorDirective {
         const firstLetter = getLetterFromArray(firstPartNumbers);
         const secondLetter = getLetterFromArray(secondPartNumbers);
         const resultLetters = firstLetter + secondLetter;
+
         if (resultLetters === fullArray[3]) {
           return null;
         } else {
