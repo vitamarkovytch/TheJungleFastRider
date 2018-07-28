@@ -45,9 +45,9 @@ export class PinValidatorDirective {
 
       if (firstPartNumbers.length === 4 && secondPartNumbers.length === 4) {
 
-        let firstLetter = getLetterFromArray(firstPartNumbers);
-        let secondLetter = getLetterFromArray(secondPartNumbers);
-        let resultLetters = firstLetter + secondLetter;
+        const firstLetter = getLetterFromArray(firstPartNumbers);
+        const secondLetter = getLetterFromArray(secondPartNumbers);
+        const resultLetters = firstLetter + secondLetter;
         if (resultLetters === fullArray[3]) {
           return null;
         } else {

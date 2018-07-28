@@ -24,6 +24,7 @@ export class RidesComponent implements OnInit {
   message: ErrorMessage;
   ridesLoaded: boolean;
   isProgress = true;
+  savedPin = '';
 
   constructor(private formBuilder: FormBuilder,
               private serverService: ServerService,
@@ -35,7 +36,12 @@ export class RidesComponent implements OnInit {
     this.message = new ErrorMessage('', '');
     this.getRides();
     this.createForm();
+    this.savedPin = this.dataService.getPin();
 
+    /*SETTING PIN TO THE INPUT (FORM) FIELD */
+    if (this.savedPin) {
+      this.form.get('pin').setValue(this.savedPin);
+    }
     /*MAKE BUTTON SUBMIT DISAPPEAR WHEN WE SCROLL DOWN THE MOBILE DEVICE SCREEN*/
     $(document).scroll(function () {
       if ($(window).scrollTop() > 300) {
@@ -118,6 +124,7 @@ export class RidesComponent implements OnInit {
     this.serverService.getTicket(data).subscribe(
       response => {
         this.dataService.saveData(response);
+        this.dataService.savePin(this.form.value['pin']);
         this.router.navigate(['/access']);
       },
       error => {
