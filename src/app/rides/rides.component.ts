@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import * as $ from 'jquery';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {CookieService} from 'ngx-cookie-service';
 
 import {ServerService} from '../shared/services/server.service';
 import {RideModel} from '../shared/models/ride.model';
@@ -24,23 +25,25 @@ export class RidesComponent implements OnInit {
   message: ErrorMessage;
   ridesLoaded: boolean;
   isProgress = true;
-  savedPin = '';
+  cookieValue = 'UNKNOWN';
 
   constructor(private formBuilder: FormBuilder,
               private serverService: ServerService,
               private dataService: DataService,
-              private router: Router) {
+              private router: Router,
+              private cookieService: CookieService) {
   }
 
   ngOnInit() {
     this.message = new ErrorMessage('', '');
     this.getRides();
     this.createForm();
-    this.savedPin = this.dataService.getPin();
 
-    /*SETTING PIN TO THE INPUT (FORM) FIELD */
-    if (this.savedPin) {
-      this.form.get('pin').setValue(this.savedPin);
+    /*GETTING PIN FROM COOKIES*/
+    this.cookieValue = this.cookieService.get('data');
+    if (this.cookieValue) {
+      /*SETTING PIN TO THE INPUT (FORM) FIELD */
+      this.form.get('pin').setValue(this.cookieValue);
     }
     /*MAKE BUTTON SUBMIT DISAPPEAR WHEN WE SCROLL DOWN THE MOBILE DEVICE SCREEN*/
     $(document).scroll(function () {
@@ -59,15 +62,13 @@ export class RidesComponent implements OnInit {
         this.ridesLoaded = true;
         this.isProgress = false;
         this.rides = response;
-
-        /*ADD/DELETE PROGRESS BAR*/
-
       },
       error => {
-        console.log(error);
         this.ridesLoaded = false;
         this.isProgress = false;
-        if (error.status === 401) {
+        if (error.error.message) {
+          this.showMessage('danger', error.error.message);
+        } else if (error.message) {
           this.showMessage('danger', error.message);
         } else {
           this.showMessage('danger', 'Server error. Check your internet or contact ' +
@@ -89,7 +90,7 @@ export class RidesComponent implements OnInit {
     return this.form.get(string).hasError('required') ? 'This field is mandatory' :
       this.form.get(string).hasError('pin') ? 'Wrong PIN, please write your pin ' +
         'on XX-XXXX-XXXX-XX format' :
-          '';
+        '';
   }
 
 
@@ -124,13 +125,16 @@ export class RidesComponent implements OnInit {
     this.serverService.getTicket(data).subscribe(
       response => {
         this.dataService.saveData(response);
-        this.dataService.savePin(this.form.value['pin']);
+
+        /*SAVING PIN TO COOKIES*/
+        this.cookieService.set( 'data', this.form.value['pin']);
         this.router.navigate(['/access']);
       },
       error => {
-        if (error.error.code === 401 || error.error.code === 503 || error.error.code === 4000
-          || error.error.code === 4001 || error.error.code === 4002 || error.error.code === 4003) {
+        if (error.error.message) {
           this.showMessage('danger', error.error.message);
+        } else if (error.message) {
+          this.showMessage('danger', error.message);
         } else {
           this.showMessage('danger', 'Server error. Check your internet or contact ' +
             'to administrator');
