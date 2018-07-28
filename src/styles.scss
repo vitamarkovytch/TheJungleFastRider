@@ -2,6 +2,7 @@
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import 'margingsPaddings';
+@import 'materialInputFormFabButton';
 
 $FontPathOpenSans: "../node_modules/npm-font-open-sans/fonts";
 @import '../node_modules/npm-font-open-sans/open-sans.scss';
@@ -60,10 +61,6 @@ body{
   line-height: 1em;
 }
 
-.colorWhite{
-   color: $colorWhite;
-}
-
 .fontColorWhite{
   color: $colorWhite;
 }
@@ -75,12 +72,15 @@ body{
 .fontSize_1_2rem{
   font-size: 1.2rem;
 }
+
 .lineHeight2{
   line-height: 2em;
 }
+
 .lineHeight_2_3{
   line-height: 2.3em;
 }
+
 .colorGrey{
   color: $text;
 }
@@ -103,7 +103,6 @@ sup {
   height: 20px;
   font-size: large;
 }
-
 
 
 .btn{
@@ -136,42 +135,4 @@ button:focus {
     line-height: 2.5em;
     font-size: x-large;
   }
-}
-
-
-
-
-
-
-.mat-fab .mat-button-wrapper{
-  padding: 0 !important;
-}
-
-.mat-fab.mat-accent[disabled]{
-  background-color: $sendButton;
-}
-
-.mat-fab, .iconBig{
-  width: 5vmax !important;
-  height: 5vmax !important;
-}
-.iconBig, .mat-button {
-  vertical-align: initial !important;
-}
-
-
-.mat-form-field-flex{
-  background-color: $colorWhite;
-}
-
-.mat-form-field{
-  width: 100%;
-}
-
-.mat-input-element, .mat-form-field-appearance-legacy .mat-form-field-label{
-  font-family: $FontPathOpenSans !important;
-  color: black !important;
-  font-weight: bold !important;
-  font-size: large !important;
-  margin-left: 10px !important;
 }

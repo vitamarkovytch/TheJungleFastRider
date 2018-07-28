@@ -88,6 +88,8 @@ export class RidesComponent implements OnInit {
 
 
   chooseRide(ride) {
+    /*TICKETS CAN'T BE SOLD WHILE PARK IS CLOSED (FROM 09:00 TILL 23:00) AND
+      THERE ARE NO AVAILABLE TICKETS*/
     if (ride.remaining_tickets === 0 || ride.return_time === null) {
       return;
     }

@@ -14,8 +14,8 @@ export class DataService {
   }
 
   getData() {
-    // return this.data;
-    return  {
+    return this.data;
+    /*return  {
       'id': 404,
       'ride': {
         'id': 2,
@@ -30,6 +30,6 @@ export class DataService {
       },
       'access_code': '9740-413b-a08f',
       'return_time': '2018-07-24T18:30:00.000+03:00'
-    };
+    };*/
   }
 }
