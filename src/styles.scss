@@ -1,0 +1,138 @@
+@import 'variables';
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import 'margingsPaddings';
+@import 'materialInputFormFabButton';
+
+$FontPathOpenSans: "../node_modules/npm-font-open-sans/fonts";
+@import '../node_modules/npm-font-open-sans/open-sans.scss';
+
+$backgroundScreen: #232323;
+$backgroundCubes: #373737;
+$text: #656565;
+$sendButton: #4c4c4b;
+$colorWhite: #ffffff;
+$width100: 100%;
+
+body{
+  font-family: $FontPathOpenSans;
+}
+
+.containerApp{
+  background-color: $backgroundScreen;
+  min-height: 100vh;
+}
+
+.cubeHeightMain{
+  height: 140px;
+}
+
+.cube{
+  background-color: $backgroundCubes;
+  position: relative;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+
+.rideZone{
+  position: absolute;
+  top: 0;
+  width: $width100;
+}
+
+.rideName{
+  margin: 0 auto;
+  width: 80%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.bottom10{
+  position: absolute;
+  bottom: 10px;
+  width: $width100;
+}
+.closeTime{
+  position: absolute;
+  bottom: 5px;
+  line-height: 1em;
+}
+
+.fontColorWhite{
+  color: $colorWhite;
+}
+
+.fontSizeXLarge{
+  font-size: x-large;
+}
+
+.fontSize_1_2rem{
+  font-size: 1.2rem;
+}
+
+.lineHeight2{
+  line-height: 2em;
+}
+
+.lineHeight_2_3{
+  line-height: 2.3em;
+}
+
+.colorGrey{
+  color: $text;
+}
+
+.fontSizeSmall{
+  font-size: small;
+}
+
+sup {
+  vertical-align: super;
+  font-size: 0.5rem;
+}
+
+.textCenter{
+  text-align: center;
+}
+
+.iconSmall{
+  width: 20px;
+  height: 20px;
+  font-size: large;
+}
+
+
+.btn{
+  border-radius: initial;
+  background-color: $sendButton;
+  color: $colorWhite;
+  width: $width100;
+}
+
+.btn-outline-secondary{
+  border-color: $sendButton;
+}
+
+.btn-outline-secondary.disabled, .btn-outline-secondary:disabled{
+  background-color: $sendButton;
+  opacity: 1;
+}
+
+button:focus {
+  outline: 0;
+}
+
+
+@media only screen and (max-width: 576px){
+  .btn{
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    margin-left: -20px;
+    line-height: 2.5em;
+    font-size: x-large;
+  }
+}

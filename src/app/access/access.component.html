@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="row marginTop20 justify-content-center">
+    <div class="col-md-6 col-lg-4 textCenter padding10_30">
+
+      <button mat-fab disabled>
+        <img class="iconBig" src="../../assets/icons/ico-04.svg" alt="done">
+      </button>
+
+      <h6 class="colorGrey fontSize_1_2rem">Thank you for using the Jungle<sup>TM</sup>
+        FastRider ticket system - your access code is now ready!
+      </h6>
+
+    </div>
+  </div>
+
+  <div class="row marginTop20 justify-content-center">
+    <div class="col-md-6 col-lg-4 padding5">
+      <div *ngIf="loadData" class="cube container-fluid"
+           [style.border-top]="'4px solid' + ticket.ride.zone.color">
+
+        <div class="row textCenter paddingTop5">
+
+          <div class="col-6 fontColorWhite fontSizeSmall paddingZero">
+            {{ticket.ride.name}}
+          </div>
+
+          <div class="col-6 colorGrey fontSizeSmall paddingZero">
+            {{ticket.ride.zone.name}}
+          </div>
+
+        </div>
+
+        <div class="row colorGrey justify-content-center textCenter marginTop20">
+          Return At
+        </div>
+
+        <div class="row justify-content-center textCenter fontColorWhite fontSizeXLarge">
+          {{ticket.return_time | customTime}}
+        </div>
+
+        <div class="row colorGrey justify-content-center textCenter marginTop20">
+          Use Access Code
+        </div>
+
+        <div class="row justify-content-center textCenter fontColorWhite fontSizeXLarge">
+          {{ticket.access_code}}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

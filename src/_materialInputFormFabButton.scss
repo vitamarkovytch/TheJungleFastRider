@@ -1,0 +1,38 @@
+$FontPathOpenSans: "../node_modules/npm-font-open-sans/fonts";
+@import '../node_modules/npm-font-open-sans/open-sans.scss';
+
+$sendButton: #4c4c4b;
+$colorWhite: #ffffff;
+
+.mat-fab .mat-button-wrapper{
+  padding: 0 !important;
+}
+
+.mat-fab.mat-accent[disabled]{
+  background-color: $sendButton;
+}
+
+.mat-fab, .iconBig{
+  width: 5vmax !important;
+  height: 5vmax !important;
+}
+.iconBig, .mat-button {
+  vertical-align: initial !important;
+}
+
+
+.mat-form-field-flex{
+  background-color: $colorWhite;
+}
+
+.mat-form-field{
+  width: 100%;
+}
+
+.mat-input-element, .mat-form-field-appearance-legacy .mat-form-field-label{
+  font-family: $FontPathOpenSans !important;
+  color: black !important;
+  font-weight: bold !important;
+  font-size: large !important;
+  margin-left: 10px !important;
+}
