@@ -2,6 +2,7 @@
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import 'margingsPaddings';
+@import 'materialInputFormFabButton';
 
 $FontPathOpenSans: "../node_modules/npm-font-open-sans/fonts";
 @import '../node_modules/npm-font-open-sans/open-sans.scss';
@@ -22,10 +23,23 @@ body{
   min-height: 100vh;
 }
 
-.cube{
+.cubeHeightMain{
   height: 140px;
+}
+
+.cube{
   background-color: $backgroundCubes;
   position: relative;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+
+.rideZone{
+  position: absolute;
+  top: 0;
+  width: $width100;
 }
 
 .rideName{
@@ -47,24 +61,26 @@ body{
   line-height: 1em;
 }
 
-.colorWhite{
-   color: $colorWhite;
-}
-
 .fontColorWhite{
   color: $colorWhite;
+}
+
+.fontSizeXLarge{
   font-size: x-large;
 }
 
 .fontSize_1_2rem{
   font-size: 1.2rem;
 }
+
 .lineHeight2{
   line-height: 2em;
 }
+
 .lineHeight_2_3{
   line-height: 2.3em;
 }
+
 .colorGrey{
   color: $text;
 }
@@ -88,13 +104,6 @@ sup {
   font-size: large;
 }
 
-.inputPIN, ::placeholder{
-  font-family: $FontPathOpenSans;
-  color: black;
-  width: $width100;
-  font-weight: bold;
-  font-size: large;
-}
 
 .btn{
   border-radius: initial;
@@ -102,8 +111,18 @@ sup {
   color: $colorWhite;
   width: $width100;
 }
+
 .btn-outline-secondary{
   border-color: $sendButton;
+}
+
+.btn-outline-secondary.disabled, .btn-outline-secondary:disabled{
+  background-color: $sendButton;
+  opacity: 1;
+}
+
+button:focus {
+  outline: 0;
 }
 
 
@@ -116,25 +135,4 @@ sup {
     line-height: 2.5em;
     font-size: x-large;
   }
-}
-
-
-
-
-
-
-.mat-fab .mat-button-wrapper{
-  padding: 0 !important;
-}
-
-.mat-fab.mat-accent[disabled]{
-  background-color: $sendButton;
-}
-
-.mat-fab, .iconBig{
-  width: 5vmax !important;
-  height: 5vmax !important;
-}
-.iconBig, .mat-button {
-  vertical-align: initial !important;
 }
