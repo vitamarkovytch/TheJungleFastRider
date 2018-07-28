@@ -4,10 +4,11 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 
 import {ServerService} from '../shared/services/server.service';
-import {RidesModel} from '../shared/models/rides.model';
+import {RideModel} from '../shared/models/ride.model';
 import {PinValidatorDirective} from '../shared/directives/pin-validator.directive';
 import {SendDataForTicketModel} from '../shared/models/send-data-forTicket.model';
 import {DataService} from '../shared/services/data.service';
+import {ErrorMessage} from '../shared/models/message.model';
 
 @Component({
   selector: 'app-rides',
@@ -15,12 +16,14 @@ import {DataService} from '../shared/services/data.service';
   styleUrls: ['./rides.component.scss']
 })
 export class RidesComponent implements OnInit {
-  rides: RidesModel[] = [];
+  rides: RideModel[] = [];
   colorRides = '#373737';
   clickedRideId = -1;
   form: FormGroup;
   sendDataForTicket: SendDataForTicketModel;
-
+  message: ErrorMessage;
+  ridesLoaded: boolean;
+  isProgress = true;
 
   constructor(private formBuilder: FormBuilder,
               private serverService: ServerService,
@@ -29,6 +32,7 @@ export class RidesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.message = new ErrorMessage('', '');
     this.getRides();
     this.createForm();
 
@@ -46,12 +50,23 @@ export class RidesComponent implements OnInit {
   private getRides() {
     this.serverService.getAllRides().subscribe(
       response => {
+        this.ridesLoaded = true;
+        this.isProgress = false;
         this.rides = response;
-        console.log(this.rides);
-        console.log(response);
+
+        /*ADD/DELETE PROGRESS BAR*/
+
       },
       error => {
         console.log(error);
+        this.ridesLoaded = false;
+        this.isProgress = false;
+        if (error.status === 401) {
+          this.showMessage('danger', error.message);
+        } else {
+          this.showMessage('danger', 'Server error. Check your internet or contact ' +
+            'to administrator');
+        }
       }
     );
   }
@@ -64,21 +79,29 @@ export class RidesComponent implements OnInit {
     });
   }
 
+  getErrorMessage(string) {
+    return this.form.get(string).hasError('required') ? 'This field is mandatory' :
+      this.form.get(string).hasError('pin') ? 'Wrong PIN, please write your pin ' +
+        'on XX-XXXX-XXXX-XX format' :
+          '';
+  }
 
-   chooseRide(ride) {
 
-    /*if (ride.remaining_tickets === 0 || ride.return_time === null) {
+  chooseRide(ride) {
+    if (ride.remaining_tickets === 0 || ride.return_time === null) {
       return;
-    }*/
+    }
 
-    /* disable previously selected ride */
+    /* ALWAYS DISABLE PREVIOUSLY SELECTED RIDE BY CHANGING IT COLOR TO GREY */
     if (this.clickedRideId !== -1) {
       document.getElementById(this.clickedRideId.toString()).style.backgroundColor = this.colorRides;
     }
 
+    /* IF WE CLICK ON THE SAME RIDE -1 MAKE THE FORM INVALID */
     if (this.clickedRideId === ride.id) {
       this.clickedRideId = -1;
     } else {
+      /* CHANGING COLOR OF SELECTED RIDE*/
       this.clickedRideId = ride.id;
       document.getElementById(ride.id).style.backgroundColor = ride.zone.color;
     }
@@ -92,18 +115,27 @@ export class RidesComponent implements OnInit {
   private getAccessTicket(data: SendDataForTicketModel) {
     this.serverService.getTicket(data).subscribe(
       response => {
-        console.log(response);
         this.dataService.saveData(response);
         this.router.navigate(['/access']);
       },
       error => {
-        console.log(error);
-        
+        if (error.error.code === 401 || error.error.code === 503 || error.error.code === 4000
+          || error.error.code === 4001 || error.error.code === 4002 || error.error.code === 4003) {
+          this.showMessage('danger', error.error.message);
+        } else {
+          this.showMessage('danger', 'Server error. Check your internet or contact ' +
+            'to administrator');
+        }
       }
     );
   }
 
-
+  private showMessage(type: string, text: string) {
+    this.message = new ErrorMessage(type, text);
+    window.setTimeout(() => {
+      this.message.text = '';
+    }, 10000);
+  }
 
 
 }

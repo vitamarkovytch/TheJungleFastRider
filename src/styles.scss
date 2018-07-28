@@ -22,8 +22,11 @@ body{
   min-height: 100vh;
 }
 
-.cube{
+.cubeHeightMain{
   height: 140px;
+}
+
+.cube{
   background-color: $backgroundCubes;
   position: relative;
   border-left: none;
@@ -32,10 +35,9 @@ body{
 }
 
 
-
 .rideZone{
   position: absolute;
-  top:0;
+  top: 0;
   width: $width100;
 }
 
@@ -64,6 +66,9 @@ body{
 
 .fontColorWhite{
   color: $colorWhite;
+}
+
+.fontSizeXLarge{
   font-size: x-large;
 }
 
@@ -99,13 +104,7 @@ sup {
   font-size: large;
 }
 
-.inputPIN, ::placeholder{
-  font-family: $FontPathOpenSans;
-  color: black;
-  width: $width100;
-  font-weight: bold;
-  font-size: large;
-}
+
 
 .btn{
   border-radius: initial;
@@ -113,9 +112,11 @@ sup {
   color: $colorWhite;
   width: $width100;
 }
+
 .btn-outline-secondary{
   border-color: $sendButton;
 }
+
 .btn-outline-secondary.disabled, .btn-outline-secondary:disabled{
   background-color: $sendButton;
   opacity: 1;
@@ -156,4 +157,21 @@ button:focus {
 }
 .iconBig, .mat-button {
   vertical-align: initial !important;
+}
+
+
+.mat-form-field-flex{
+  background-color: $colorWhite;
+}
+
+.mat-form-field{
+  width: 100%;
+}
+
+.mat-input-element, .mat-form-field-appearance-legacy .mat-form-field-label{
+  font-family: $FontPathOpenSans !important;
+  color: black !important;
+  font-weight: bold !important;
+  font-size: large !important;
+  margin-left: 10px !important;
 }
